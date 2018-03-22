@@ -148,7 +148,8 @@ SOURCES += main.cpp\
     unixsignals.cpp \
     socketpair.cpp \
     persistentcookiejar.cpp \
-    qwk_settings.cpp
+    qwk_settings.cpp \
+    webpage.cpp
 
 HEADERS  += mainwindow.h \
     webview.h \
@@ -160,7 +161,8 @@ HEADERS  += mainwindow.h \
     unixsignals.h \
     socketpair.h \
     persistentcookiejar.h \
-    qwk_settings.h
+    qwk_settings.h \
+    webpage.h
 
 # DEBUG
 #message(- SOURCES: $${SOURCES})

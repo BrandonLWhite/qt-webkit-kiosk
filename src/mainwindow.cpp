@@ -52,6 +52,7 @@
 
 #include "cachingnm.h"
 #include "persistentcookiejar.h"
+#include "webpage.h"
 
 MainWindow::MainWindow() : QMainWindow()
 {
@@ -216,7 +217,7 @@ void MainWindow::init(AnyOption *opts)
     setCentralWidget(view);
 
     view->setSettings(qwkSettings);
-    view->setPage(new QWebPage(view));
+    view->setPage(new WebPage(view));
 
     // --- Disk cache --- //
     if (qwkSettings->getBool("cache/enable")) {
@@ -270,7 +271,11 @@ void MainWindow::init(AnyOption *opts)
     view->settings()->setAttribute(QWebSettings::PluginsEnabled,
         qwkSettings->getBool("browser/plugins")
     );
-
+    
+    view->settings()->setAttribute(QWebSettings::LocalStorageEnabled, 
+        qwkSettings->getBool("localstorage/enable")
+    );
+    
 #if QT_VERSION >= 0x050400
     view->settings()->setAttribute(QWebSettings::Accelerated2dCanvasEnabled, true);
 #endif
